@@ -108,14 +108,8 @@ Objectif : Créer plusieurs pages
 ng generate component home
 ng generate component about
 ```
+### EXERCICE
 
-Exercice :
-
-Configure les routes
-
-Utilise <router-outlet>
-
-Navigue avec routerLink
-
-🎯 Mini-projet CRUD 
-🔥 Application « Gestion des utilisateurs »
+ Configure les routes `<router-outlet>` , navigue avec `routerLink`
+ 
+🎯 Mini-projet CRUD « Gestion des utilisateurs »
