@@ -1,36 +1,36 @@
-# formation-angular
+## formation-angular
 
 1️⃣ Créer une application Angular
-
+```
 ng new formation-angular
 cd formation-angular
 ng serve
-
-✔ Ouvre http://localhost:4200
+```
+```sh
+ http://localhost:4200
+```
 
 2️⃣ Interpolation & binding
 
-Objectif : Comprendre le lien HTML ↔ TypeScript
-
 app.component.ts
-
+```ts
 name = 'Apprenant Angular';
-
+```
 app.component.html
 
-<h1>Bonjour {{ name }}</h1>
-<input [(ngModel)]="name" />
-
+```html
+ <p>Bonjour {{ name }}</p>
+ <input [(ngModel)]="name" />
+```
 ➡ Ajoute FormsModule dans app.module.ts
+
 ✔ Le texte change quand tu tapes dans l’input
 
 3️⃣ Créer un composant
-
+```
 ng generate/g component/c user-card
-
-Exercice :
-
-Passe un username depuis AppComponent
+```
+Exercice : Passe un username depuis AppComponent
 
 Affiche-le dans UserCardComponent
 
@@ -39,21 +39,27 @@ Affiche-le dans UserCardComponent
 4️⃣ Gestion des événements
 
 user-card.component.html
-
+```html
 <button (click)="sayHello()">Dire bonjour</button>
-
+```
 user-card.component.ts
-
+```js
 sayHello() {
   alert('Bonjour depuis UserCard !');
 }
+```
 
 🔄 Niveau 3 : Directives Angular
 5️⃣ Boucle avec *ngFor
 
+ts
+```
 users = ['Alice', 'Bob', 'Charlie'];
-
+```
+html
+```html
 <li *ngFor="let user of users">{{ user }}</li>
+```
 
 ✔ Ajoute un champ pour créer un nouvel utilisateur dynamiquement
 
@@ -71,8 +77,9 @@ Ajoute un bouton pour basculer l’état
 
 7️⃣ Créer un service
 
+```sh
 ng generate service user
-
+```
 Exercice :
 
 Stocke la liste des utilisateurs dans le service
@@ -97,8 +104,10 @@ Utilise subscribe()
 
 Objectif : Créer plusieurs pages
 
+```sh
 ng generate component home
 ng generate component about
+```
 
 Exercice :
 
