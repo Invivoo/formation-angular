@@ -1,14 +1,65 @@
-## formation-angular
+## Angular Training
 
+NVM Install For Windows 
+https://github.com/coreybutler/nvm-windows/releases/download/1.2.2/nvm-setup.zip
+```
+Installation Steps :
+    1-Download and run the nvm-setup.exe installer
+    2-Select the NVM installation path (e.g., C:\nvm)
+    3-Select the Node.js installation path (e.g., C:\nodejs)
+    4-Confirm the installation
+```
+NVM Install For Linux/MacOS 
+Using the Installation Script
+
+Open a terminal and execute one of the following commands:
+```
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+Or:
+```
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+```
+Version compatibility : https://angular.dev/reference/versions
+```
+nvm use 22
+```
 1️⃣ Créer une application Angular
 ```
 ng new formation-angular
 cd formation-angular
+npm i @angular/cli@21
 ng serve
 ```
 ```sh
  http://localhost:4200
 ```
+Project structure
+```
+  .
+  ├── nodes_modules
+  └── src
+      ├── app
+      │   ├── app.config.ts
+      │   ├── app.css
+      │   ├── app.html
+      │   ├── app.routes.ts
+      │   ├── app.spec.ts
+      │   └── app.ts
+      └── index.html
+      └── main.ts
+      └── styles.css
+ ├── angular.json
+ ├── package.json
+ ├── package-lock.json
+ ├── README.md
+ ├── tsconfig.app.json
+ ├── tsconfig.app
+ ├── tsconfig.spec.json
+
+```
+
+
 
 2️⃣ Interpolation & binding
 
