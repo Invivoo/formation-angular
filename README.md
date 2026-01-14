@@ -98,109 +98,127 @@ Project structure version 21
  ├── tsconfig.app
  ├── tsconfig.spec.json
 
+```
 
-2️⃣ Interpolation & binding
+2️⃣ Services api and crud components
 
-1 exercice app component
+1 add module users on app/ directory
+```
+ng g module users --routing
+```
+2 add model folder : 
+```
+add user.model.ts
+```
+3 add a new component : 
+```
+ng g component crud
+```
+4 add services folder : 
+```
+ng g service users
+```
+```
+└── src
+      ├── app
+      │   ├── users 
+          │   ├── model 
+              │   ├── user.model.ts
+          │   ├── services 
+              │   ├── users.service.ts    
+          │   ├── crud 
+              │   ├── crud.component.css   
+              │   ├── crud.component.html  
+              │   ├── crud.component.ts  
+          │   ├── users.module.ts
+          │   ├── users-routing.module.ts
+      │   ├── app.component.html
+      │   ├── app.component.spec.ts
+      │   ├── app.component.ts
+      │   ├── app.module.ts
+      │   ├── app.routing.module.ts
+```
+
+3️⃣ users.serice.ts
 ```ts
-title = 'Formation Angular';
-```
-app.component.html
+import { Injectable } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {UserModel} from '../model/user.model';
 
-```html
+const baseUrl = 'http://localhost:8081/api/v1/employees';
 
- <p>Bonjour {{ name }}</p>
- <input [(ngModel)]="name" />
-```
-➡ Ajoute FormsModule dans app.module.ts
+@Injectable({
+  providedIn: 'root'
+})
+export class UsersService {
 
-✔ Le texte change quand tu tapes dans l’input
+  constructor(private http: HttpClient) {}
 
-3️⃣ Créer un module / composant
-```
-ng generate/g module users
-ng g c user-card
-```
-Exercice : Passe un username depuis AppComponent
+  getUsers(): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(baseUrl);
+  }
 
-Affiche-le dans UserCardComponent
+  create(data: any): Observable<any> {
+    return this.http.post(baseUrl, data);
+  }
 
-✔ Utilise @Input()
+  update(id: any, data: any): Observable<any> {
+    return this.http.put(`${baseUrl}/${id}`, data);
+  }
 
-4️⃣ Gestion des événements
+  delete(id: any): Observable<any> {
+    return this.http.delete(`${baseUrl}/${id}`);
+  }
 
-user-card.component.html
-```html
-<button (click)="sayHello()">Dire bonjour</button>
-```
-user-card.component.ts
-```js
-sayHello() {
-  alert('Bonjour depuis UserCard !');
+  findByEmail(email: any): Observable<UserModel[]> {
+    return this.http.get<UserModel[]>(`${baseUrl}?email=${email}`);
+  }
 }
-```
 
-🔄 Niveau 3 : Directives Angular
-5️⃣ Boucle avec *ngFor
+```
+- crud.component.ts
+```ts
+  export class CrudComponent implements OnInit {
 
-ts
+  userList: UserModel[] = [];
+
+  constructor(private usersService: UsersService) {}
+
+  ngOnInit(): void {
+    this.usersService.getUsers().subscribe(rep => {
+      this.userList  = rep
+    });
+  }
+.
+.
+.
 ```
-users = ['Alice', 'Bob', 'Charlie'];
-```
-html
+- add a user-card component
+  add : ```@Input() user: UserModel;```
+
+- user-card component html :
 ```html
-<li *ngFor="let user of users">{{ user }}</li>
+- <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+  <div class="card-header">USER</div>
+  <div class="card-body">
+    <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
+    <p class="card-text">
+      {{ user.email }}
+    </p>
+  </div>
+</div>
 ```
-
-✔ Ajoute un champ pour créer un nouvel utilisateur dynamiquement
-
-6️⃣ Condition avec *ngIf
-
-Objectif : Affichage conditionnel
-
-Exercice :
-
-Crée un booléen isLoggedIn
-
-Affiche un message seulement s’il est true
-
-Ajoute un bouton pour basculer l’état
-
-7️⃣ Créer un service
-
-```sh
-ng generate service user
+- crud.component.html 
+```html
+<div *ngFor="let user of userList">
+  <app-user-card [user]="user"></app-user-card>
+</div>
 ```
-Exercice :
+- app.compoent.html
+  add :
+  ```html
+  <app-crud></app-crud>
+  <router-outlet></router-outlet>
+  ```
 
-Stocke la liste des utilisateurs dans le service
-
-Injecte le service dans un composant
-
-Récupère les données depuis le service
-
-8️⃣ Introduction aux Observables
-
-Objectif : Comprendre le mode réactif
-
-Exercice :
-
-Retourne les utilisateurs sous forme de Observable
-
-Utilise subscribe()
-
-⭐ Bonus : utilise le async pipe dans le template
-
-9️⃣ Navigation
-
-Objectif : Créer plusieurs pages
-
-```sh
-ng generate component home
-ng generate component about
-```
-### EXERCICE
-
- Configure les routes `<router-outlet>` , navigue avec `routerLink`
- 
-🎯 Mini-projet CRUD « Gestion des utilisateurs »
