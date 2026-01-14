@@ -22,19 +22,60 @@ wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
 Version compatibility : https://angular.dev/reference/versions
 ```
-nvm use 22
+1 - working with angular 13/14 :
+    nvm use 14.15
+    npm i @angular/cli@13
+2 - working with angular 21
+    nouveatés depuis la version 15 - 21
+    * Les Standalone Components 
+    * Les Signals
+    * Les Signal Forms (expérimental)
+    * Nouvelle syntaxe de contrôle de flux (@if, @for, @switch
+    nvm use 22 ou 24
+    npm i @angular/cli@21
 ```
 1️⃣ Créer une application Angular
 ```
 ng new formation-angular
 cd formation-angular
-npm i @angular/cli@21
 ng serve
 ```
+use backend api : 
+```
+https://github.com/Invivoo/spring-crud
+```
+test :
 ```sh
  http://localhost:4200
 ```
-Project structure
+Project structure version 13/14
+```
+  .
+  ├── nodes_modules
+  └── src
+      ├── app
+      │   ├── app.component.css
+      │   ├── app.component.html
+      │   ├── app.component.spec.ts
+      │   ├── app.component.ts
+      │   ├── app.module.ts
+      │   ├── app.routing.module.ts
+      |
+      └── index.html
+      └── main.ts
+      └── styles.css
+      └── test.ts
+ ├── angular.json
+ ├── package.json
+ ├── package-lock.json
+ ├── README.md
+ ├── tsconfig.app.json
+ ├── tsconfig.app
+ ├── tsconfig.spec.json
+
+```
+
+Project structure version 21
 ```
   .
   ├── nodes_modules
@@ -57,19 +98,17 @@ Project structure
  ├── tsconfig.app
  ├── tsconfig.spec.json
 
-```
-
-
 
 2️⃣ Interpolation & binding
 
-app.component.ts
+1 exercice app component
 ```ts
-name = 'Apprenant Angular';
+title = 'Formation Angular';
 ```
 app.component.html
 
 ```html
+
  <p>Bonjour {{ name }}</p>
  <input [(ngModel)]="name" />
 ```
@@ -77,9 +116,10 @@ app.component.html
 
 ✔ Le texte change quand tu tapes dans l’input
 
-3️⃣ Créer un composant
+3️⃣ Créer un module / composant
 ```
-ng generate/g component/c user-card
+ng generate/g module users
+ng g c user-card
 ```
 Exercice : Passe un username depuis AppComponent
 
