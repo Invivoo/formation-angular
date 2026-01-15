@@ -138,7 +138,14 @@ ng g service users
       │   ├── app.module.ts
       │   ├── app.routing.module.ts
 ```
-
+- install bootstrap
+  ```
+  npm install --save bootstrap
+  ```
+  - update styles.css
+  ``` add
+  @import "bootstrap/dist/css/bootstrap.min.css";
+  ```
 3️⃣ users.serice.ts
 ```ts
 import { Injectable } from '@angular/core';
@@ -218,7 +225,40 @@ export class UsersService {
 - app.compoent.html
   add :
   ```html
-  <app-crud></app-crud>
-  <router-outlet></router-outlet>
-  ```
+  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link active">Angular Training</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users/all">Users List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/users/create">Create User</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">INVIVOO</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+```
+
+-  routing app.routing.module.ts
+```ts
+const routes: Routes = [
+    {path: '', component: AppComponent},
+    {path: 'users', loadChildren: () => import('../users/users.module').then(m => m.UsersModule)}
+  ];
+```
+- routing users.routing.module.ts
+```ts
+const routes: Routes = [
+  {path: 'all', component: CrudComponent},
+  {path: 'create', component: AddUserComponent},
+];
+```
+
 
