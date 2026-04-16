@@ -9,7 +9,7 @@
 ```bash
 nvm install 22
 nvm use 22
-npm install -g @angular/cli@21
+npm install -g @angular/cli@19
 ```
 
 ## 2) Install dependencies

@@ -4,6 +4,7 @@ import { UserModel } from '../model/user.model';
 
 @Component({
   selector: 'app-user-card',
+  standalone: false,
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.css']
 })

@@ -5,6 +5,7 @@ import { UsersService } from '../services/users.service';
 
 @Component({
   selector: 'app-crud',
+  standalone: false,
   templateUrl: './crud.component.html',
   styleUrls: ['./crud.component.css']
 })

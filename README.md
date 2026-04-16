@@ -1,10 +1,10 @@
 # Formation Angular
 
-![Angular 14+](https://img.shields.io/badge/Angular-14%2B-dd0031?logo=angular&logoColor=white)
+![Angular 19.2](https://img.shields.io/badge/Angular-19.2-dd0031?logo=angular&logoColor=white)
 ![Angular 21 Ready](https://img.shields.io/badge/Angular-21%20ready-0f172a?logo=angular)
 ![Status](https://img.shields.io/badge/status-active-success)
 
-Training repository to practice Angular fundamentals (module-based style for Angular 13/14) and modern Angular concepts (up to Angular 21).
+Training repository to practice Angular fundamentals (module-based style) and modern Angular concepts (up to Angular 21).
 
 ## Quick Start
 
@@ -63,6 +63,10 @@ Reference: https://angular.dev/reference/versions
 # Angular 13/14 style training
 nvm use 14.15
 npm install -g @angular/cli@14
+
+# Secure baseline used in this repository
+nvm use 22
+npm install -g @angular/cli@19
 
 # Angular 21 experimentation
 nvm use 22
