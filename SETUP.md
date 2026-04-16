@@ -30,3 +30,7 @@ npm run build
 This frontend expects a backend API, for example:
 
 - https://github.com/Invivoo/spring-crud
+
+Expected users endpoint used by the app:
+
+- `http://localhost:8081/api/v1/employees`
