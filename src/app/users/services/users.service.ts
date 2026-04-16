@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../model/user.model';
 
@@ -50,6 +50,7 @@ export class UsersService {
 
   /** Recherche des utilisateurs par adresse e-mail. */
   findByEmail(email: string): Observable<User[]> {
-    return this.http.get<User[]>(`${baseUrl}?email=${email}`);
+    const params = new HttpParams().set('email', email);
+    return this.http.get<User[]>(baseUrl, { params });
   }
 }
