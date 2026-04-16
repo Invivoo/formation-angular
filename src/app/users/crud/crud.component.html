@@ -1,0 +1,14 @@
+<section>
+  <h1 class="h3 mb-4">Users</h1>
+
+  <p *ngIf="loading" class="text-muted">Loading users...</p>
+  <p *ngIf="error" class="text-danger">{{ error }}</p>
+
+  <div *ngIf="!loading && !error" class="row g-3">
+    <div class="col-12 col-md-6 col-lg-4" *ngFor="let user of users">
+      <app-user-card [user]="user"></app-user-card>
+    </div>
+
+    <p *ngIf="users.length === 0" class="text-muted">No users found.</p>
+  </div>
+</section>
