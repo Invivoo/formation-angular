@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserModel } from '../model/user.model';
 
-const EMPLOYEES_API_URL = 'http://localhost:8081/api/v1/employees';
+const USERS_API_URL = 'http://localhost:8081/api/v1/employees';
 
 @Injectable({
   providedIn: 'root',
@@ -13,22 +13,22 @@ export class UsersService {
   constructor(private readonly http: HttpClient) {}
 
   getUsers(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(EMPLOYEES_API_URL);
+    return this.http.get<UserModel[]>(USERS_API_URL);
   }
 
   create(data: UserModel): Observable<UserModel> {
-    return this.http.post<UserModel>(EMPLOYEES_API_URL, data);
+    return this.http.post<UserModel>(USERS_API_URL, data);
   }
 
   update(id: number, data: Partial<UserModel>): Observable<UserModel> {
-    return this.http.put<UserModel>(`${EMPLOYEES_API_URL}/${id}`, data);
+    return this.http.put<UserModel>(`${USERS_API_URL}/${id}`, data);
   }
 
   delete(id: number): Observable<void> {
-    return this.http.delete<void>(`${EMPLOYEES_API_URL}/${id}`);
+    return this.http.delete<void>(`${USERS_API_URL}/${id}`);
   }
 
   findByEmail(email: string): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(`${EMPLOYEES_API_URL}?email=${encodeURIComponent(email)}`);
+    return this.http.get<UserModel[]>(`${USERS_API_URL}?email=${encodeURIComponent(email)}`);
   }
 }
