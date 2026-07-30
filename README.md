@@ -1,264 +1,156 @@
-## Angular Training
+# Formation Angular
 
-NVM Install For Windows 
-https://github.com/coreybutler/nvm-windows/releases/download/1.2.2/nvm-setup.zip
-```
-Installation Steps :
-    1-Download and run the nvm-setup.exe installer
-    2-Select the NVM installation path (e.g., C:\nvm)
-    3-Select the Node.js installation path (e.g., C:\nodejs)
-    4-Confirm the installation
-```
-NVM Install For Linux/MacOS 
-Using the Installation Script
+![Angular 19.2](https://img.shields.io/badge/Angular-19.2-dd0031?logo=angular&logoColor=white)
+![Angular 21 Ready](https://img.shields.io/badge/Angular-21%20ready-0f172a?logo=angular)
+![Status](https://img.shields.io/badge/status-active-success)
 
-Open a terminal and execute one of the following commands:
+Training repository to practice Angular fundamentals (module-based style) and modern Angular concepts (up to Angular 21).
+
+## Quick Start
+
+```bash
+git clone https://github.com/Invivoo/formation-angular.git
+cd formation-angular
+npm install
+npm run start
 ```
+
+Open `http://localhost:4200`.
+
+> Backend API examples:
+> - https://github.com/Invivoo/spring-crud
+> - https://github.com/Invivoo/node-crud-api
+
+---
+
+## Table of Contents
+
+- [Prerequisites](#prerequisites)
+- [Setup](#setup)
+- [Project Structure](#project-structure)
+- [Development Steps](#development-steps)
+- [Conventions and Best Practices](#conventions-and-best-practices)
+- [Troubleshooting](#troubleshooting)
+- [Contributing](#contributing)
+- [Resources](#resources)
+
+## Prerequisites
+
+- Node.js managed with NVM
+- npm
+- Angular CLI
+
+### NVM installation
+
+- Windows: https://github.com/coreybutler/nvm-windows/releases
+- Linux/macOS:
+
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
-Or:
-```
+
+or
+
+```bash
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
-Version compatibility : https://angular.dev/reference/versions
-```
-1 - working with angular 13/14 :
-    nvm use 14.15
-    npm i @angular/cli@13
-2 - working with angular 21
-    nouveatés depuis la version 15 - 21
-    * Les Standalone Components 
-    * Les Signals
-    * Les Signal Forms (expérimental)
-    * Nouvelle syntaxe de contrôle de flux (@if, @for, @switch
-    nvm use 22 ou 24
-    npm i @angular/cli@21
-```
-1️⃣ Créer une application Angular
-```
-ng new formation-angular
-cd formation-angular
-ng serve
-```
-use backend api : 
-```
-https://github.com/Invivoo/spring-crud
-```
-test :
-```sh
- http://localhost:4200
-```
-Project structure version 13/14
-```
-  .
-  ├── nodes_modules
-  └── src
-      ├── app
-      │   ├── app.component.css
-      │   ├── app.component.html
-      │   ├── app.component.spec.ts
-      │   ├── app.component.ts
-      │   ├── app.module.ts
-      │   ├── app.routing.module.ts
-      |
-      └── index.html
-      └── main.ts
-      └── styles.css
-      └── test.ts
- ├── angular.json
- ├── package.json
- ├── package-lock.json
- ├── README.md
- ├── tsconfig.app.json
- ├── tsconfig.app
- ├── tsconfig.spec.json
 
+### Angular version compatibility
+
+Reference: https://angular.dev/reference/versions
+
+```bash
+# Angular 13/14 style training
+nvm use 14.15
+npm install -g @angular/cli@14
+
+# Secure baseline used in this repository
+nvm use 22
+npm install -g @angular/cli@19
+
+# Angular 21 experimentation
+nvm use 22
+npm install -g @angular/cli@21
 ```
 
-Project structure version 21
-```
-  .
-  ├── nodes_modules
-  └── src
-      ├── app
-      │   ├── app.config.ts
-      │   ├── app.css
-      │   ├── app.html
-      │   ├── app.routes.ts
-      │   ├── app.spec.ts
-      │   └── app.ts
-      └── index.html
-      └── main.ts
-      └── styles.css
- ├── angular.json
- ├── package.json
- ├── package-lock.json
- ├── README.md
- ├── tsconfig.app.json
- ├── tsconfig.app
- ├── tsconfig.spec.json
+## Setup
 
+```bash
+npm install
+npm run start
 ```
 
-2️⃣ Services api and crud components
+## Project Structure
 
-1 add module users on app/ directory
-```
-ng g module users --routing
-```
-2 add model folder : 
-```
-add user.model.ts
-```
-3 add a new component : 
-```
-ng g component crud
-```
-4 add services folder : 
-```
-ng g service users
-```
-```
+```text
+.
+├── README.md
+├── SETUP.md
+├── CONTRIBUTING.md
+├── angular.json
+├── package.json
+├── tsconfig.json
 └── src
-      ├── app
-      │   ├── users 
-          │   ├── model 
-              │   ├── user.model.ts
-          │   ├── services 
-              │   ├── users.service.ts    
-          │   ├── crud 
-              │   ├── crud.component.css   
-              │   ├── crud.component.html  
-              │   ├── crud.component.ts  
-          │   ├── users.module.ts
-          │   ├── users-routing.module.ts
-      │   ├── app.component.html
-      │   ├── app.component.spec.ts
-      │   ├── app.component.ts
-      │   ├── app.module.ts
-      │   ├── app.routing.module.ts
+    ├── index.html
+    ├── main.ts
+    ├── styles.css
+    └── app
+        ├── app.component.ts
+        ├── app.component.html
+        ├── app.component.css
+        ├── app.module.ts
+        ├── app-routing.module.ts
+        └── users
+            ├── users.module.ts
+            ├── users-routing.module.ts
+            ├── model/user.model.ts
+            ├── services/users.service.ts
+            ├── crud
+            │   ├── crud.component.ts
+            │   ├── crud.component.html
+            │   └── crud.component.css
+            └── user-card
+                ├── user-card.component.ts
+                ├── user-card.component.html
+                └── user-card.component.css
 ```
-- install bootstrap
+
+## Development Steps
+
+1. Create an Angular app scaffold.
+2. Add a `users` feature module with routing.
+3. Add a typed `UserModel`.
+4. Add `UsersService` for API CRUD operations.
+5. Add `CrudComponent` and `UserCardComponent`.
+6. Add Bootstrap global styles.
+7. Connect navbar routing (`/users/all`, `/users/create`).
+
+## Conventions and Best Practices
+
+- Use strict TypeScript typing (`Partial<T>`, explicit interfaces).
+- Keep feature code grouped by module (`users/*`).
+- Keep services thin and reusable.
+- Use presentational components (`user-card`) for rendering.
+- Avoid business logic in templates.
+- Keep routes explicit and predictable.
+
+## Troubleshooting
+
+- **`ng: command not found`**: install Angular CLI globally (`npm i -g @angular/cli`).
+- **Port 4200 already used**:
+  ```bash
+  npm run start -- --port 4300
   ```
-  npm install --save bootstrap
-  ```
-  - update styles.css
-  ``` add
-  @import "bootstrap/dist/css/bootstrap.min.css";
-  ```
-3️⃣ users.serice.ts
-```ts
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {UserModel} from '../model/user.model';
+- **Backend connection refused**: ensure API is running on `http://localhost:8081` or update service base URL.
+- **Node version mismatch**: run `nvm use` with the expected version.
 
-const baseUrl = 'http://localhost:8081/api/v1/employees';
+## Contributing
 
-@Injectable({
-  providedIn: 'root'
-})
-export class UsersService {
+Please read [CONTRIBUTING.md](./CONTRIBUTING.md) before opening a PR.
 
-  constructor(private http: HttpClient) {}
+## Resources
 
-  getUsers(): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(baseUrl);
-  }
-
-  create(data: any): Observable<any> {
-    return this.http.post(baseUrl, data);
-  }
-
-  update(id: any, data: any): Observable<any> {
-    return this.http.put(`${baseUrl}/${id}`, data);
-  }
-
-  delete(id: any): Observable<any> {
-    return this.http.delete(`${baseUrl}/${id}`);
-  }
-
-  findByEmail(email: any): Observable<UserModel[]> {
-    return this.http.get<UserModel[]>(`${baseUrl}?email=${email}`);
-  }
-}
-
-```
-- crud.component.ts
-```ts
-  export class CrudComponent implements OnInit {
-
-  userList: UserModel[] = [];
-
-  constructor(private usersService: UsersService) {}
-
-  ngOnInit(): void {
-    this.usersService.getUsers().subscribe(rep => {
-      this.userList  = rep
-    });
-  }
-.
-.
-.
-```
-- add a user-card component
-  add : ```@Input() user: UserModel;```
-
-- user-card component html :
-```html
-- <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
-  <div class="card-header">USER</div>
-  <div class="card-body">
-    <h5 class="card-title">{{ user.firstName }} {{ user.lastName }}</h5>
-    <p class="card-text">
-      {{ user.email }}
-    </p>
-  </div>
-</div>
-```
-- crud.component.html 
-```html
-<div *ngFor="let user of userList">
-  <app-user-card [user]="user"></app-user-card>
-</div>
-```
-- app.compoent.html
-  add :
-  ```html
-  <nav class="navbar navbar-expand-sm bg-primary navbar-dark">
-  <div class="container-fluid">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link active">Angular Training</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/users/all">Users List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/users/create">Create User</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">INVIVOO</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-<router-outlet></router-outlet>
-```
-
--  routing app.routing.module.ts
-```ts
-const routes: Routes = [
-    {path: '', component: AppComponent},
-    {path: 'users', loadChildren: () => import('../users/users.module').then(m => m.UsersModule)}
-  ];
-```
-- routing users.routing.module.ts
-```ts
-const routes: Routes = [
-  {path: 'all', component: CrudComponent},
-  {path: 'create', component: AddUserComponent},
-];
-```
-
-
+- Angular docs: https://angular.dev
+- RxJS docs: https://rxjs.dev
+- Bootstrap docs: https://getbootstrap.com/docs
+- Setup guide: [SETUP.md](./SETUP.md)
