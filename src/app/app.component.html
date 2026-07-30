@@ -1,0 +1,12 @@
+<!-- Barre de navigation simple pour accéder aux pages principales -->
+<nav>
+  <a routerLink="/">Accueil</a>
+  <a routerLink="/users/all">Liste des utilisateurs</a>
+  <a routerLink="/users/create">Créer un utilisateur</a>
+</nav>
+
+<!--
+  router-outlet est une zone d'affichage dynamique.
+  Angular y rend le composant correspondant à la route active.
+-->
+<router-outlet></router-outlet>
